@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-background-image="./assets/img/Background_canvas.jpg">
+            </section>
+            <section data-background-image="./assets/img/painting.jpg" data-background-opacity="0.5">
+                <h4 class="fragment shrink header_h4">Canvas is an HTML element used to draw graphics using programming
+                    languages
+                    (usually
+                    JavaScript).</h4>
+                <p class="fragment shrink">Allows you to place on the canvas:</p>
+                <p class="fragment fade-up">lines, shapes, diagrams,</p>
+                <p class="fragment fade-up">animations, images, text and more</p>
+
+            </section>
+            <section>
+                <div class="r-stack">
+                    <img class="fragment fade-out" data-fragment-index="0"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Gerade.svg/1200px-Gerade.svg.png"
+                        width="1000" height="500">
+                    <img class="fragment" src="https://helpingwithmath.com/wp-content/uploads/2021/11/image-101.png"
+                        width="1000" height="400">
+                    <img class="fragment current-visible" data-fragment-index="0"
+                        src="https://www.sidefx.com/docs/houdini/images/nodes/sop/curve_nurbs.jpg" width="1000"
+                        height="450">
+                </div>
+            </section>
+            <section data-background-video="./assets/video/Constellations Screensave.mp4" data-background-video-loop
+                data-background-video-muted>
+            </section>
+            <section data-background-video="./assets/video/Matrix Rain Screensaver - Short Version 4K.mp4"
+                data-background-video-loop data-background-video-muted>
+            </section>
+
+            <section>Basic usage
+            </section>
+            <section>
+                Default canvas width and height: 300x150px
+                <pre><code data-line-numbers data-ln-start-from="1">
+            <canvas id="canvas" width="500" height="200">
+            </canvas>
+            <script src="./index.js"></script>
+            </code></pre>
+
+                <p class="fragment">The <strong>canvas</strong> element has a method called
+                    getContext(), used to
+                    obtain the rendering context and its drawing functions. </p>
+                <div class="fragment fade-up">
+                    <pre><code data-line-numbers data-ln-start-from="1">
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+                    </code></pre>
+                </div>
+            </section>
+            <section>
+                <h2>Draw Lines</h2>
+                <p class="fragment shrink">Methods used</p>
+                <div class="fragment shrink">
+                    <ul>
+                        <li>beginPath() method</li>
+                        <li>moveTo(x,y) method</li>
+                        <li>lineTo(x, y) method</li>
+                        <li>stroke() method</li>
+                    </ul>
+                </div>
+                <div class="fragment">
+                    <pre><code data-line-numbers data-ln-start-from="1">
+            ctx.beginPath();
+            ctx.moveTo(10, 45);
+            ctx.lineTo(180, 47);
+            ctx.stroke();
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <img src="https://www.w3resource.com/w3r_images/simple-line.png" alt="">
+                </div>
+            </section>
+            <section>
+                <h2>Draw rectangle</h2>
+                <p class="fragment shrink">Methods used</p>
+                <div class="fragment shrink">
+                    <ul>
+                        <li>beginPath() method</li>
+                        <li>rect() method</li>
+                        <li>stroke() method</li>
+                    </ul>
+                </div>
+                <div class="fragment">
+                    <pre><code data-line-numbers data-ln-start-from="1">
+            ctx.beginPath();
+            ctx.rect(20, 20, 150, 100);
+            ctx.stroke();
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <img src="./assets/img/Rectangle.png" alt="">
+                </div>
+            </section>
+
+            <section>
+                <h2>Draw a filled circle</h2>
+                <p class="fragment shrink">Methods and properties used</p>
+                <div class="fragment shrink">
+                    <ul>
+                        <li>beginPath() method</li>
+                        <li>arc() method</li>
+                        <li>fillStyle</li>
+                        <li>strokeStyle</li>
+                        <li>fill() method</li>
+                        <li>stroke() method</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <pre><code data-line-numbers data-ln-start-from="1">
+            ctx.beginPath();
+            ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = 'yellow';
+            ctx.strokeStyle = "red"
+            ctx.fill();
+            ctx.stroke();
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <img src="./assets/img/Circle.png" alt="">
+                </div>
+            </section>
+
+            <section>
+                <h2>Drawing text</h2>
+                <p>The canvas rendering context provides two methods to render text:
+                    <em>fillText()</em> and <em>strokeText()</em>
+                </p>
+                <div class="fragment">
+                    <pre><code data-line-numbers="2|8-10|13-15">
+            ctx.font = "48px serif";
+            ctx.fillText("Hello world", 10, 50);
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <img src="./assets/img/Text_fill.png" alt="">
+                </div>
+            </section>
+
+            <section>
+                <div>
+                    <pre><code data-line-numbers="2|8-10|13-15">
+            ctx.font = "48px serif";
+            ctx.strokeText("Hello world", 10, 50);
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <img src="./assets/img/Text_stroke.png" alt="">
+                </div>
+            </section>
+            <section>
+                <section>
+                    <h2>Using images</h2>
+                    <p class="fragment shrink">Methods used</p>
+                    <div class="fragment shrink">
+                        <ul>
+                            <li>new Image()</li>
+                            <li>drawImage()</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <pre><code data-line-numbers data-ln-start-from="1">
+            let newImage = new Image();
+            newImage.src = './assets/fog-1535201_1920.jpg'
+
+            newImage.onload = () => {
+                ctx.drawImage(newImage, 0, 0, 500, 300);
+            }
+                    </code></pre>
+                    </div>
+                    <div class="fragment">
+                        <img src="./assets/img/Images_forest.png" alt="">
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section>BASIC ANIMATION</section>
+                <section>
+                    <div>
+                        <pre><code data-line-numbers data-ln-start-from="1">
+        <canvas id="animationCanvas" width="400" height="400">
+        </canvas>
+                        </code></pre>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <pre><code data-line-numbers data-ln-start-from="1">
+let canvas
+let canvasContext
+let increment = 0
+let speed = 5
+window.onload = function () {
+    canvas = document.getElementById('animationCanvas');
+    canvasContext = canvas.getContext('2d');
+    setInterval(drawEverything, 50);
+}
+function drawEverything() {
+    bounce()
+    increment = increment + speed;
+    canvasContext.fillStyle = 'black';
+    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    canvasContext.fillStyle = 'blue';
+    canvasContext.fillRect(increment, 200, 10, 10);
+    canvasContext.fillStyle = 'green';
+    canvasContext.fillRect(200, increment, 10, 10);
+    canvasContext.fillStyle = 'red';
+    canvasContext.fillRect(increment, increment, 10, 10);
+}
+function bounce() {
+    if (increment < 0) {
+        speed = -speed
+    }
+    if (increment > 400) {
+        speed = -speed
+    }
+}
+                        </code></pre>
+                    </div>
+                </section>
+                <section>
+                    <video data-autoplay src="./assets/video/Project 1 (video-converter.com).mp4"></video>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="./assets/img/sun-5294496_1920.jpg" data-background-opacity="0.5">
+                    <h2>Optimizing canvas</h2>
+                </section>
+                <section>Pre-render similar primitives or repeating objects on an offscreen canvas</section>
+                <section data-background-image="./assets/img/pay-2446667_1920.png" data-background-opacity="0.2">
+                    Avoid
+                    floating-point coordinates <br>and use integers instead
+                </section>
+                <section>Don't scale images in drawImage</section>
+                <section data-background-image="./assets/img/Nine Gallery.jpg" data-background-opacity="0.4">Use
+                    multiple layered canvases <br>for complex scenes</section>
+                <section data-background-image="./assets/img/hd-wallpaper-2695569_1920.jpg"
+                    data-background-opacity="0.2">Scaling canvas using CSS transforms</section>
+                <section data-background-image="./assets/img/hd-wallpaper-2695569_1920.jpg"
+                    data-background-opacity="0.2">Use plain
+                    CSS for large background images</section>
+                <section data-background-image="./assets/img/window-354617_1920.jpg" data-background-opacity="0.2">Turn
+                    off transparency
+                    <div class="fragment">
+                        <pre><code data-line-numbers data-ln-start-from="1">
+    const ctx = canvas.getContext("2d", { alpha: false });
+                        </code></pre>
+                    </div>
+                </section>
+                <section data-background-image="./assets/img/minimalizm-piksel-pikseli.jpg"
+                    data-background-opacity="0.3">
+                    Scaling for high resolution displays
+                    <div class="fragment">
+                        <pre><code data-line-numbers data-ln-start-from="1">
+        // Get the DPR and size of the canvas
+        const dpr = window.devicePixelRatio;
+        const rect = canvas.getBoundingClientRect();
+
+        // Set the "actual" size of the canvas
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        // Scale the context to ensure correct drawing operations
+        ctx.scale(dpr, dpr);
+
+        // Set the "drawn" size of the canvas
+        canvas.style.width = `${rect.width}px`;
+        canvas.style.height = `${rect.height}px`;
+                        </code></pre>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
